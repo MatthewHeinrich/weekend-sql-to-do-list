@@ -1,7 +1,7 @@
 $( document ).ready( function(){
     setupClickListeners();
     getTasks();
-});
+}); // end ready
 
 function setupClickListeners(){
     $('#submitButton').on('click', addTask );
@@ -9,6 +9,7 @@ function setupClickListeners(){
     $('#taskOut').on('click', '#deleteTaskButton', deleteTask );
 } // end onReady
 
+// POST
 function addTask(){
     console.log( 'in addTask' );
     let taskToAdd = {
@@ -29,6 +30,7 @@ function addTask(){
     })
 } // end addTask
 
+// GET
 function getTasks(){
     console.log( 'in getTask' );
     $.ajax({
@@ -41,9 +43,10 @@ function getTasks(){
         console.log( error );
         alert('sorry cannot get tasks')
 
-    })
+    }) // end ajax
 } // end getTasks
 
+// display 
 function showTasks(tasks){
     let el = $('#taskOut');
     el.empty();
@@ -60,6 +63,7 @@ function showTasks(tasks){
     } // end for loop
 } // end showTasks
 
+// PUT
 function taskCompletedButton(){
     
     const myId = $(this).data( 'id' );
@@ -73,10 +77,11 @@ function taskCompletedButton(){
     }).catch( function ( error ){
         console.log( error );
         alert( 'Can not update' );
-    })
+    }) // end ajax
 }// end taskCompletedButton
 
 
+// DELETE
 function deleteTask(){
     const myId = $(this).data( 'id' );
     console.log('in deleteTask', myId);
@@ -90,7 +95,7 @@ function deleteTask(){
     }).catch( function ( error ){
         console.log( error );
         alert( 'could not delete' );
-    })
+    }) // end ajax
 } // end deleteTasks
 
 function clearInputs(){
