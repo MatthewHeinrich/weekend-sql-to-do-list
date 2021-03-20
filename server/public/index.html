@@ -11,14 +11,16 @@
     <script src="scripts/client.js"></script>
 </head>
 <body>
-
-    <h1>Weekend To Do List</h1>
-
+    <div>
+        <h1><strong> Weekend To Do List </strong></h1>
+    </div>
     <div id="inputDiv">
         <section id="taskIn">
-            <h2>Create a Task:</h2>
-            <input type="text" id="createTask" placeholder="Create Task">
-            <button id="submitButton">Add Task</button>
+            <h2 id="createIn">Create a Task:</h2>
+            <nav class="navbar navbar-expand-sm bg-dark">
+            <input type="text" class="form-control form-control-lg" id="createTask" placeholder="Create Task">
+            <button id="submitButton" class="btn btn-primary">Add Task</button>
+            </nav>
         </section>
     </div>
 

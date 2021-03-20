@@ -6,7 +6,7 @@ $( document ).ready( function(){
 function setupClickListeners(){
     $('#submitButton').on('click', addTask );
     $('#taskOut').on('click', '#1', taskCompletedButton);
-    $('#taskOut').on('click', '.deleteTaskButton', deleteTask );
+    $('#taskOut').on('click', '#deleteTaskButton', deleteTask );
 } // end onReady
 
 function addTask(){
@@ -52,16 +52,15 @@ function showTasks(tasks){
         <label for="1"></label>
         <label class="text" for="1">
         </label>`
-        el.append(`<tr style="${tasks[i].completed ? "background-color: rgb(161, 247, 133)":''}">
+        el.append(`<tr style="${tasks[i].completed ? "background-color: rgba(124, 242, 124, 0.824)":''}">
             <td> ${tasks[i].task} </td>
             <td> ${completedTask} </td>
-            <td> <button data-id="${tasks[i].id}" class="deleteTaskButton"> Delete </button> </td>
+            <td> <button data-id="${tasks[i].id}" id="deleteTaskButton" class="btn btn-danger"> Delete </button> </td>
         </tr>`)
     } // end for loop
 } // end showTasks
 
 function taskCompletedButton(){
-    // $('#taskOut').append($(this).closest('tr').css({'background-color': 'green'}));
     
     const myId = $(this).data( 'id' );
     console.log('in completedTask', myId);
