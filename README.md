@@ -9,7 +9,7 @@
 
  ## Screen Shot
 
- ![img](file:///Users/matthewheinrich/Pictures/Screen%20Shot%202021-03-20%20at%2012.14.56%20PM%202.pdf)
+ ![img](file:///Users/matthewheinrich/Pictures/Screen%20Shot%202021-03-20%20at%2012.14.56%20PM.png)
 
 
  # Built With
