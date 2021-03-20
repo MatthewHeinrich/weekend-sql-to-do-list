@@ -5,7 +5,10 @@ $( document ).ready( function(){
 
 function setupClickListeners(){
     $('#submitButton').on('click', addTask );
-    $('#taskOut').on('click', '.completedTaskButton', taskCompletedButton );
+    $('#taskOut').on('click', '#1', taskCompletedButton);
+    $('#taskOut').on('click', '#1', function() {
+        $(this).closest('tr').css({'background-color': 'green'})
+    });
     $('#taskOut').on('click', '.deleteTaskButton', deleteTask );
 } // end onReady
 
@@ -47,11 +50,11 @@ function showTasks(tasks){
     let el = $('#taskOut');
     el.empty();
     for (let i=0; i < tasks.length; i++ ){
-        let completedTask = `<button data-id="${tasks[i].id}" class="completedTaskButton"> Check it Off </button>`
-        if (tasks[i].completed){
-            completedTask = '';
-        }
-        el.append(`<tr>
+        let completedTask = `<input data-id="${tasks[i].id}" type="checkbox" ${tasks[i].completed ? "checked":""} name="layout" id="1" value="option">
+        <label for="1"></label>
+        <label class="text" for="1">
+        </label>`
+        el.append(`<tr style="${tasks[i].completed ? "background-color: green":''}">
             <td> ${tasks[i].task} </td>
             <td> ${completedTask} </td>
             <td> <button class="deleteTaskButton"> Delete </button> </td>
@@ -60,6 +63,8 @@ function showTasks(tasks){
 } // end showTasks
 
 function taskCompletedButton(){
+    // $('#taskOut').append($(this).closest('tr').css({'background-color': 'green'}));
+    
     const myId = $(this).data( 'id' );
     console.log('in completedTask', myId);
     $.ajax({
@@ -77,4 +82,13 @@ function taskCompletedButton(){
 
 function deleteTask(){
     console.log('in deleteTask');
-}
+    $.ajax({
+        method: 'DELETE',
+        url: '/tasks/' + myId
+    }).then( function ( response ){
+        console.log( 'in delete with:', response )
+    }).catch( function ( error ){
+        console.log( error );
+        alert( 'could not delete' );
+    })
+} // end deleteTasks
