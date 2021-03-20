@@ -42,8 +42,17 @@ router.put( '/:id', ( req, res )=>{
         res.sendStatus( 500 );
     })
 })
-// DELETE
 
+// DELETE
+router.delete( '/:id', ( req, res )=>{
+    let queryString = `DELETE FROM "to_do_list" WHERE "id"=$1`;
+    pool.query( queryString, [ req.params.id ] ).then( ( results )=>{
+        res.sendStatus( 200 );
+    }).catch( ( error )=>{
+        console.log( error );
+        res.sendStatus( 500 );
+    })
+})
 
 // export
 module.exports = router;

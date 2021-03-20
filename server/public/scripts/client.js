@@ -6,9 +6,6 @@ $( document ).ready( function(){
 function setupClickListeners(){
     $('#submitButton').on('click', addTask );
     $('#taskOut').on('click', '#1', taskCompletedButton);
-    $('#taskOut').on('click', '#1', function() {
-        $(this).closest('tr').css({'background-color': 'green'})
-    });
     $('#taskOut').on('click', '.deleteTaskButton', deleteTask );
 } // end onReady
 
@@ -25,6 +22,7 @@ function addTask(){
     }).then( function ( response ){
         console.log( 'in POST with:', response );
         getTasks();
+        clearInputs();
     }).catch( function ( error ){
         console.log( error );
         alert('Cannot add task');
@@ -54,10 +52,10 @@ function showTasks(tasks){
         <label for="1"></label>
         <label class="text" for="1">
         </label>`
-        el.append(`<tr style="${tasks[i].completed ? "background-color: green":''}">
+        el.append(`<tr style="${tasks[i].completed ? "background-color: rgb(161, 247, 133)":''}">
             <td> ${tasks[i].task} </td>
             <td> ${completedTask} </td>
-            <td> <button class="deleteTaskButton"> Delete </button> </td>
+            <td> <button data-id="${tasks[i].id}" class="deleteTaskButton"> Delete </button> </td>
         </tr>`)
     } // end for loop
 } // end showTasks
@@ -81,14 +79,21 @@ function taskCompletedButton(){
 
 
 function deleteTask(){
-    console.log('in deleteTask');
+    const myId = $(this).data( 'id' );
+    console.log('in deleteTask', myId);
+
     $.ajax({
         method: 'DELETE',
         url: '/tasks/' + myId
     }).then( function ( response ){
         console.log( 'in delete with:', response )
+        getTasks();
     }).catch( function ( error ){
         console.log( error );
         alert( 'could not delete' );
     })
 } // end deleteTasks
+
+function clearInputs(){
+    $('#createTask').val('');
+} // end clearInputs

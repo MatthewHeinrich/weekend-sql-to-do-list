@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekend To Do List</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <script src="vendors/JQuery Code.js"></script>
     <script src="scripts/client.js"></script>
 </head>
@@ -23,12 +24,12 @@
 
     <div id="outputDiv">
         <!-- <h2 id="tasksHeader">Tasks:</h2> -->
-        <table>
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Task</th>
-                    <th>Complete</th>
-                    <th>Delete</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Complete</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody id="taskOut">
