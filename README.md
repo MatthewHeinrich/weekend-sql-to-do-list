@@ -9,7 +9,7 @@
 
  ## Screen Shot
 
- ![img]"Screen Shot 2021-03-20 at 12.14.56 PM 2.pdf"
+ ![img](Screen Shot 2021-03-20 at 12.14.56 PM 2.pdf)
 
 
  # Built With
