@@ -55,7 +55,7 @@ function showTasks(tasks){
         <label for="1"></label>
         <label class="text" for="1">
         </label>`
-        el.append(`<tr style="${tasks[i].completed ? "background-color: rgba(124, 242, 124, 0.824)":''}">
+        el.append(`<tr style="${tasks[i].completed ? "background-color: rgb(160, 230, 193)":''}">
             <td> ${tasks[i].task} </td>
             <td> ${completedTask} </td>
             <td> <button data-id="${tasks[i].id}" id="deleteTaskButton" class="btn btn-danger"> Delete </button> </td>
@@ -85,7 +85,7 @@ function taskCompletedButton(){
 function deleteTask(){
     const myId = $(this).data( 'id' );
     console.log('in deleteTask', myId);
-
+    
     $.ajax({
         method: 'DELETE',
         url: '/tasks/' + myId
