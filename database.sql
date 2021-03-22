@@ -6,5 +6,6 @@ CREATE TABLE "to_do_list"(
     "completed" BOOLEAN DEFAULT FALSE
 );
 
-INSERT INTO "to_do_list" ( id, task, completed ) VALUES ( '', '' );
+INSERT INTO "to_do_list" ( "task" ) VALUES ( '', '' );
+DELETE FROM "to_do_list" WHERE ( "id", "task", "completed", )= '' ;
 SELECT * FROM "to_do_list";
